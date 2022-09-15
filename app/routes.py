@@ -1,13 +1,13 @@
 from app import app
+from flask import render_template
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return '''
-    <html>
-        <head><title>Front Page</head></title>
-        <body>
-            <h2>Hello Word!</h2>
-        </body>
-    </html>
-    '''
+    nome = "Luzia Amorim"
+    dados = {"Idade":"40", "Cidade":"Manaus"}
+    return render_template('index.html', nome=nome, dados=dados)
+
+@app.route('/contato')
+def contato():
+    return render_template('contato.html')
