@@ -2,6 +2,7 @@
     {% block conteudo %}
     <h2>Ola {{nome}}</h2>
     <p>
+        <img class="imgquadrada" src="{{ url_for('static', filename='img/michele.jpg') }}"><br/>
         Idade: {{dados.Idade}} <br/>
         Cidade:{{dados.Cidade}}
     </p>
