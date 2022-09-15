@@ -1,0 +1,2 @@
+FLASK_APP=micropage.py
+FLASK_DEBUG=1
