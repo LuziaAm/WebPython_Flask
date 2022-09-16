@@ -2,6 +2,8 @@ from crypt import methods
 from app import app
 from flask import render_template
 from flask import request
+from flask import flash
+
 
 @app.route('/')
 @app.route('/index', defaults={"nome":"usuário"})
@@ -18,8 +20,11 @@ def contato():
 def login():
     return render_template('login.html')
 
-@app.route('/autenticar', methods=['GET'])
+@app.route('/autenticar', methods=['POST'])
 def autenticar():
-    usuario = request.args.get('usuario')
-    senha = request.args.get('senha')
-    return "usuario: {} e senha: {}".format(usuario, senha)
+    usuario = request.form.get('usuario')
+    senha = request.form.get('senha')
+    if usuario == 'admin' and senha == '123':
+        return "usuario: {} e senha: {}".format(usuario, senha)
+    else:
+        return "Dados inválidos!"
