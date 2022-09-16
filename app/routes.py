@@ -1,8 +1,9 @@
+from contextlib import redirect_stderr
 from crypt import methods
 from app import app
 from flask import render_template
 from flask import request
-from flask import flash
+from flask import flash, redirect
 
 
 @app.route('/')
@@ -27,4 +28,7 @@ def autenticar():
     if usuario == 'admin' and senha == '123':
         return "usuario: {} e senha: {}".format(usuario, senha)
     else:
-        return "Dados inválidos!"
+        flash("Dados Inválidos")
+        flash("usuário ou Senha inválidos!")
+
+        return redirect('/login')
